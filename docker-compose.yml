@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  app:
+    image: node:lts-bullseye
+    container_name: 2025-quaint-app-container
+    volumes:
+      - .:/workspace
+    ports:
+      - 3000:3000
+    working_dir: /workspace
+    tty: true
