@@ -16,7 +16,9 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "typescript": "^5.6.3",
     "vite-plugin-vuetify": "^2.0.4",
+    "vue-tsc": "^2.1.10",
     "vuetify": "^3.7.4"
   }
 }
