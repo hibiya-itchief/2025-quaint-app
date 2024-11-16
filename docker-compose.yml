@@ -8,5 +8,5 @@ services:
       - .:/workspace
     ports:
       - 3000:3000
-    working_dir: /workspace
+    working_dir: /workspace/app
     tty: true
