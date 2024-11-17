@@ -16,7 +16,12 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "eslint": "^9.15.0",
+    "eslint-plugin-vue": "^9.31.0",
+    "globals": "^15.12.0",
     "typescript": "^5.6.3",
+    "typescript-eslint": "^8.14.0",
     "vite-plugin-vuetify": "^2.0.4",
     "vue-tsc": "^2.1.10",
     "vuetify": "^3.7.4"
