@@ -16,7 +16,7 @@ export default defineNuxtConfig({
       });
     },
     //...
-    "@sidebase/nuxt-auth",
+    // "@sidebase/nuxt-auth",
   ],
   vite: {
     vue: {

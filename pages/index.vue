@@ -9,3 +9,9 @@
     </v-row>
   </v-app>
 </template>
+
+<script setup lang="ts">
+definePageMeta({
+  auth: false
+})
+</script>
