@@ -2,6 +2,12 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "oderwat.indent-rainbow",
+    "vscode-icons-team.vscode-icons",
+    "ms-azuretools.vscode-docker",
+    "github.vscode-github-actions",
+    "Vue.volar",
+    "octref.vetur"
   ]
 }
