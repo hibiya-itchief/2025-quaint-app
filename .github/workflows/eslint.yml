@@ -21,5 +21,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           level: error
           reporter: github-pr-review
-          eslint_flags: "src/"
           fail_on_error: true
