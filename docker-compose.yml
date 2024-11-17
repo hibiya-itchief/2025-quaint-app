@@ -10,3 +10,4 @@ services:
       - 3000:3000
     working_dir: /workspace
     tty: true
+    command: yarn install
