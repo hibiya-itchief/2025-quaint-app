@@ -1,0 +1,9 @@
+{
+  "extensions.ignoreRecommendations": false,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // prettierを用いる場合に設定
+  "eslint.format.enable": false // prettierを用いる場合に設定
+}
