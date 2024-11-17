@@ -20,6 +20,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           level: error
-          eslint_flags: "/pages"
+          eslint_flags: "pages/"
           reporter: github-pr-review
           fail_on_error: true
