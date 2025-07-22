@@ -2,6 +2,7 @@ import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {},
   compatibilityDate: "2024-04-03",
   ssr: true,
   devtools: { enabled: true },
@@ -27,5 +28,10 @@ export default defineNuxtConfig({
   },
   typescript: {
     typeCheck: true,
+  },
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.NUXT_PUBLIC_API_BASE,
+    },
   },
 });
