@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "quaint-app",
   "private": true,
   "type": "module",
   "scripts": {
@@ -29,5 +29,8 @@
     "vite-plugin-vuetify": "^2.0.4",
     "vue-tsc": "^3.0.3",
     "vuetify": "^3.7.4"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
   }
 }
