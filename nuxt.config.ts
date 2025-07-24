@@ -116,5 +116,8 @@ export default defineNuxtConfig({
       deployConfig: true,
       nodeCompat: true,
     },
+    prerender: {
+      routes: ["/"],
+    },
   },
 });
