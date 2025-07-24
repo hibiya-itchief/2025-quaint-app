@@ -11,6 +11,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.0",
     "@mdi/font": "^7.4.47",
     "@sidebase/nuxt-auth": "^0.9.4",
     "eslint-config-prettier": "^9.1.0",
