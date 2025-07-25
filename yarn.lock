@@ -1092,7 +1092,7 @@
     unimport "^5.1.0"
     untyped "^2.0.0"
 
-"@nuxt/kit@^3.15.4", "@nuxt/kit@^3.16.2", "@nuxt/kit@^3.17.6":
+"@nuxt/kit@^3.15.4", "@nuxt/kit@^3.16.2", "@nuxt/kit@^3.17.5", "@nuxt/kit@^3.17.6":
   version "3.17.7"
   resolved "https://registry.npmjs.org/@nuxt/kit/-/kit-3.17.7.tgz"
   integrity sha512-JLno3ur7Pix2o/StxIMlEHRkMawA6h7uzjZBDgxdeKXRWTYY8ID9YekSkN4PBlEFGXBfCBOcPd5+YqcyBUAMkw==
@@ -1767,6 +1767,16 @@
   dependencies:
     tslib "^2.4.0"
 
+"@types/dom-webcodecs@^0.1.11":
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/@types/dom-webcodecs/-/dom-webcodecs-0.1.15.tgz#541a6a6d7183f0422e790bcb7964bedb2afaef47"
+  integrity sha512-omOlCPvTWyPm4ZE5bZUhlSvnHM2ZWM2U+1cPiYFL/e8aV5O9MouELp+L4dMKNTON0nTeHqEg+KWDfFQMY5Wkaw==
+
+"@types/emscripten@^1.39.10", "@types/emscripten@^1.40.1":
+  version "1.40.1"
+  resolved "https://registry.yarnpkg.com/@types/emscripten/-/emscripten-1.40.1.tgz#4c34102d7cd1503979d4e6652082c23fd805805e"
+  integrity sha512-sr53lnYkQNhjHNN0oJDdUm5564biioI5DuOpycufDVK7D3y+GR3oUswe2rlwY1nPNyusHbrJ9WoTyIHl4/Bpwg==
+
 "@types/estree@*", "@types/estree@1.0.8", "@types/estree@^1.0.0", "@types/estree@^1.0.6":
   version "1.0.8"
   resolved "https://registry.npmjs.org/@types/estree/-/estree-1.0.8.tgz"
@@ -1805,6 +1815,11 @@
   version "1.3.5"
   resolved "https://registry.npmjs.org/@types/triple-beam/-/triple-beam-1.3.5.tgz"
   integrity sha512-6WaYesThRMCl19iryMYP7/x2OVgCtbIVflDGFpWnb9irXI3UjYE4AzmYuiUKY1AJstGijoY+MgUszMgRxIYTYw==
+
+"@types/web-bluetooth@^0.0.21":
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/@types/web-bluetooth/-/web-bluetooth-0.0.21.tgz#525433c784aed9b457aaa0ee3d92aeb71f346b63"
+  integrity sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==
 
 "@types/yauzl@^2.9.1":
   version "2.10.3"
@@ -2189,6 +2204,25 @@
   dependencies:
     upath "^2.0.1"
 
+"@vueuse/core@^13.4.0":
+  version "13.5.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-13.5.0.tgz#1136d3db088945d7b7a2397170737d5a3e557b36"
+  integrity sha512-wV7z0eUpifKmvmN78UBZX8T7lMW53Nrk6JP5+6hbzrB9+cJ3jr//hUlhl9TZO/03bUkMK6gGkQpqOPWoabr72g==
+  dependencies:
+    "@types/web-bluetooth" "^0.0.21"
+    "@vueuse/metadata" "13.5.0"
+    "@vueuse/shared" "13.5.0"
+
+"@vueuse/metadata@13.5.0":
+  version "13.5.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-13.5.0.tgz#18c24a32489b0a4fb9d7436efc048e836bfc4799"
+  integrity sha512-euhItU3b0SqXxSy8u1XHxUCdQ8M++bsRs+TYhOLDU/OykS7KvJnyIFfep0XM5WjIFry9uAPlVSjmVHiqeshmkw==
+
+"@vueuse/shared@13.5.0":
+  version "13.5.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-13.5.0.tgz#c36e3e0eafca9c3b92356ccef139db0df7d9905e"
+  integrity sha512-K7GrQIxJ/ANtucxIXbQlUHdB0TPA8c+q5i+zbrjxuhJCnJ9GtBg75sBSnvmLSxHKPg2Yo8w62PWksl9kwH0Q8g==
+
 "@whatwg-node/disposablestack@^0.0.6":
   version "0.0.6"
   resolved "https://registry.npmjs.org/@whatwg-node/disposablestack/-/disposablestack-0.0.6.tgz"
@@ -2402,6 +2436,21 @@ balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
+
+barcode-detector@2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/barcode-detector/-/barcode-detector-2.2.2.tgz#1a9c2cfd71a81bdebed29adfcafcf637d5014712"
+  integrity sha512-JcSekql+EV93evfzF9zBr+Y6aRfkR+QFvgyzbwQ0dbymZXoAI9+WgT7H1E429f+3RKNncHz2CW98VQtaaKpmfQ==
+  dependencies:
+    "@types/dom-webcodecs" "^0.1.11"
+    zxing-wasm "1.1.3"
+
+barcode-detector@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/barcode-detector/-/barcode-detector-3.0.5.tgz#4a7b2d60378b2d74071fe922bf052550d35d9eda"
+  integrity sha512-SWeGhJ8SEW0T3Anbr2wEugUXW2bSCld3PauZh+LjTgN1lSInnIrI+RnG53NkzS4pl3cfPCl1AZ10Rq+hSkXBSw==
+  dependencies:
+    zxing-wasm "2.2.0"
 
 bare-events@^2.2.0:
   version "2.5.0"
@@ -5078,6 +5127,18 @@ nth-check@^2.0.1, nth-check@^2.1.1:
   dependencies:
     boolbase "^1.0.0"
 
+nuxt-qrcode@^0.4.6:
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/nuxt-qrcode/-/nuxt-qrcode-0.4.6.tgz#b6ee9f2f2aeda7e7f86d67f28b3ec8769f752a5a"
+  integrity sha512-O3oBQLVKFVkwUr8Ifg4Z3G6hkpOYyT+hhQen1+tNnYmacYwyevUbqFMNNNeEcGkMJsBgwiSLzCv8ZjHPFNxKiA==
+  dependencies:
+    "@nuxt/kit" "^3.17.5"
+    "@vueuse/core" "^13.4.0"
+    barcode-detector "^3.0.5"
+    defu "^6.1.4"
+    uqr "^0.1.2"
+    vue-qrcode-reader "^5.7.2"
+
 nuxt@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/nuxt/-/nuxt-4.0.0.tgz"
@@ -6124,6 +6185,11 @@ scule@^1.3.0:
   resolved "https://registry.npmjs.org/scule/-/scule-1.3.0.tgz"
   integrity sha512-6FtHJEvt+pVMIB9IBY+IcCJ6Z5f1iQnytgyfKMhDKgmzYG+TeH/wx1y3l27rshSbLiSanrR9ffZDrEsmjlQF2g==
 
+sdp@^3.2.0:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/sdp/-/sdp-3.2.1.tgz#a2f79eecd7c5adb90d54e1bc9812775d80f3c06c"
+  integrity sha512-lwsAIzOPlH8/7IIjjz3K0zYBk7aBVVcvjMwt3M4fLxpjMYyy7i3I97SLHebgn4YBjirkzfp3RvRDWSKsh/+WFw==
+
 semver@^6.3.1:
   version "6.3.1"
   resolved "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz"
@@ -6661,7 +6727,7 @@ type-fest@^4.18.2:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-4.27.0.tgz"
   integrity sha512-3IMSWgP7C5KSQqmo1wjhKrwsvXAtF33jO3QY+Uy++ia7hqvgSK6iXbbg5PbDBc1P2ZbNEDgejOrN4YooXvhwCw==
 
-type-fest@^4.39.1, type-fest@^4.6.0:
+type-fest@^4.39.1, type-fest@^4.41.0, type-fest@^4.6.0:
   version "4.41.0"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-4.41.0.tgz"
   integrity sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==
@@ -7061,6 +7127,14 @@ vue-eslint-parser@^9.4.3:
     lodash "^4.17.21"
     semver "^7.3.6"
 
+vue-qrcode-reader@^5.7.2:
+  version "5.7.3"
+  resolved "https://registry.yarnpkg.com/vue-qrcode-reader/-/vue-qrcode-reader-5.7.3.tgz#d9e9166981e2ac3aa697c64bde4a0e328f6d0ad4"
+  integrity sha512-iSGko42FsEvdHyizBMBs/X+HMO9Z5ONDxjW+mQdoraOR5emRNedmjC5SEJdYzGz8ZP5ME3lwB4iHy3S7MOt5Qw==
+  dependencies:
+    barcode-detector "2.2.2"
+    webrtc-adapter "8.2.3"
+
 vue-router@^4.5.1, vue-router@latest:
   version "4.5.1"
   resolved "https://registry.npmjs.org/vue-router/-/vue-router-4.5.1.tgz"
@@ -7106,6 +7180,13 @@ webpack-virtual-modules@^0.6.2:
   version "0.6.2"
   resolved "https://registry.npmjs.org/webpack-virtual-modules/-/webpack-virtual-modules-0.6.2.tgz"
   integrity sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==
+
+webrtc-adapter@8.2.3:
+  version "8.2.3"
+  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-8.2.3.tgz#85e5e52ea68e808be8d6db85e338aa5c95e80022"
+  integrity sha512-gnmRz++suzmvxtp3ehQts6s2JtAGPuDPjA1F3a9ckNpG1kYdYuHWYpazoAnL9FS5/B21tKlhkorbdCXat0+4xQ==
+  dependencies:
+    sdp "^3.2.0"
 
 whatwg-url@^5.0.0:
   version "5.0.0"
@@ -7316,3 +7397,18 @@ zod@^3.23.8:
   version "3.25.76"
   resolved "https://registry.npmjs.org/zod/-/zod-3.25.76.tgz"
   integrity sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==
+
+zxing-wasm@1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/zxing-wasm/-/zxing-wasm-1.1.3.tgz#256a7ad65ec60c1604fbe04bac776f4858598ae5"
+  integrity sha512-MYm9k/5YVs4ZOTIFwlRjfFKD0crhefgbnt1+6TEpmKUDFp3E2uwqGSKwQOd2hOIsta/7Usq4hnpNRYTLoljnfA==
+  dependencies:
+    "@types/emscripten" "^1.39.10"
+
+zxing-wasm@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/zxing-wasm/-/zxing-wasm-2.2.0.tgz#ff055c3c81d11d88ed684fb75d96b8b72e3f0091"
+  integrity sha512-RyHxVaAHsLSDzmwcAG05IF8sVOE5Ta2JT1dRDh0mzVZOIiDXZstsjkqvKHasN1n4lvFSbX7ngkHDufnt/XI07Q==
+  dependencies:
+    "@types/emscripten" "^1.40.1"
+    type-fest "^4.41.0"

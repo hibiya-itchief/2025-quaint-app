@@ -82,9 +82,13 @@ export default defineNuxtConfig({
   build: {
     transpile: ["vuetify"],
   },
-  //sidebase/nuxt-authについて https://nuxt.com/modules/sidebase-auth
+
+  // https://nuxt.com/modules ここに色々ある
   modules: [
+    //sidebase/nuxt-authについて https://nuxt.com/modules/sidebase-auth
     "@sidebase/nuxt-auth",
+    //QRコード https://nuxt.com/modules/qrcode
+    "nuxt-qrcode",
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
         // @ts-expect-error
@@ -92,6 +96,10 @@ export default defineNuxtConfig({
       });
     },
   ],
+
+  css: ["~/assets/css/main.css"],
+
+  //public配下のファイルを適切に処理する
   vite: {
     vue: {
       template: {
