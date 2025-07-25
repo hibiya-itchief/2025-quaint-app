@@ -3,7 +3,10 @@ import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  compatibilityDate: "2024-04-03",
+  ssr: true,
   app: {
+    baseURL: "/",
     head: {
       htmlAttrs: {
         lang: "ja",
@@ -71,23 +74,23 @@ export default defineNuxtConfig({
       ],
     },
   },
-  compatibilityDate: "2024-04-03",
-  ssr: true,
 
+  //devtoolsの設定
   devtools: { enabled: true },
+
   //vuetifyの設定
   build: {
     transpile: ["vuetify"],
   },
+  //sidebase/nuxt-authについて https://nuxt.com/modules/sidebase-auth
   modules: [
+    "@sidebase/nuxt-auth",
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
         // @ts-expect-error
         config.plugins.push(vuetify({ autoImport: true }));
       });
     },
-    //...
-    // "@sidebase/nuxt-auth",
   ],
   vite: {
     vue: {
@@ -102,6 +105,7 @@ export default defineNuxtConfig({
   },
   // 環境変数
   runtimeConfig: {
+    //ブラウザからも確認可能な値はpublicに入れる
     public: {
       apiBase: "", //NUXT_PUBLIC_API_BASEに書き換えられる
     },

@@ -13,7 +13,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.0.0",
     "@mdi/font": "^7.4.47",
-    "@sidebase/nuxt-auth": "^0.9.4",
+    "@sidebase/nuxt-auth": "^1.0.0",
     "eslint-config-prettier": "^9.1.0",
     "nuxt": "^4.0.0",
     "sass": "^1.89.2",
