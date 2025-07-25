@@ -85,13 +85,34 @@ export default defineNuxtConfig({
 
   // https://nuxt.com/modules ここに色々ある
   modules: [
+    // https://nuxt.com/modules/stylelint
+    "@nuxtjs/stylelint-module",
     //sidebase/nuxt-authについて https://nuxt.com/modules/sidebase-auth
     "@sidebase/nuxt-auth",
-    //QRコード https://nuxt.com/modules/qrcode
+    // https://nuxt.com/modules/content
+    "@nuxt/content",
+    // https://nuxt.com/modules/vite-pwa-nuxt
+    [
+      "@vite-pwa/nuxt",
+      {
+        meta: {
+          name: "星陵祭",
+          author: "IT委員会|東京都立日比谷高等学校",
+        },
+        manifest: {
+          name: "星陵祭",
+          short_name: "星陵祭",
+          lang: "ja",
+        },
+      },
+    ],
+    //QRコード https://nuxt.com/modules/qrcode https://qrcode.s94.dev/
     "nuxt-qrcode",
+    // https://nuxt.com/modules/gtag
+    ["nuxt-gtag", { id: "G-3R9RL31VGF", debug: true }],
+    //VuetifyのコンポーネントやスタイルをVite経由で自動インポート
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
-        // @ts-expect-error
         config.plugins.push(vuetify({ autoImport: true }));
       });
     },
