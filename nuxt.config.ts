@@ -113,6 +113,7 @@ export default defineNuxtConfig({
     //VuetifyのコンポーネントやスタイルをVite経由で自動インポート
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
+        // @ts-expect-error Viteの型定義がVuetifyプラグインを正しく認識できない
         config.plugins.push(vuetify({ autoImport: true }));
       });
     },
