@@ -121,6 +121,20 @@ export default defineNuxtConfig({
 
   css: ["~/assets/css/main.css"],
 
+  auth: {
+    isEnabled: true,
+    disableServerSideAuth: false,
+    originEnvKey: "AUTH_ORIGIN",
+    baseURL: "http://localhost:3000/api/auth",
+    providers: {
+      /* your provider config */
+    },
+    sessionRefresh: {
+      enablePeriodically: true,
+      enableOnWindowFocus: true,
+    },
+  },
+
   //public配下のファイルを適切に処理する
   vite: {
     vue: {
