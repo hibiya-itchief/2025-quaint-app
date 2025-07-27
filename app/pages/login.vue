@@ -18,9 +18,10 @@ const { setToken } = useAuthState();
 const { getSession } = useAuth();
 
 onMounted(async () => {
+  console.log("取得したtoken:", token);
   if (token) {
-    await setToken(token); // JWTをクッキーに保存
-    await getSession(); // セッション情報を取得
+    setToken(token); // JWTをクッキーに保存
+    getSession(); // セッション情報を取得
     navigateTo("/"); // トップページへ遷移
   }
 });
