@@ -122,16 +122,20 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
 
   auth: {
-    isEnabled: true,
-    disableServerSideAuth: false,
-    originEnvKey: "AUTH_ORIGIN",
-    baseURL: "http://localhost:3000/api/auth",
-    providers: {
-      /* your provider config */
+    origin: process.env.NUXT_PUBLIC_API_BASE,
+    globalAppMiddleware: true, //アクセス前に認証されてるか確認
+    session: { strategy: "jwt" },
+    provider: {
+      type: "local",
+      pages: {
+        login: "/login",
+      },
     },
-    sessionRefresh: {
-      enablePeriodically: true,
-      enableOnWindowFocus: true,
+    token: {
+      cookieName: "auth.token",
+      sameSiteAttribute: "lax",
+      secureCookieAttribute: true,
+      httpOnlyCookieAttribute: true,
     },
   },
 
@@ -151,7 +155,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     //ブラウザからも確認可能な値はpublicに入れる
     public: {
-      apiBase: "", //NUXT_PUBLIC_API_BASEに書き換えられる
+      apiBase: process.env.NUXT_PUBLIC_API_BASE, //NUXT_PUBLIC_API_BASEに書き換えられる
     },
   },
   //プラグイン設定
