@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthState, useAuth, useRoute, navigateTo } from "#imports";
+import { useAuth, useRoute, navigateTo } from "#imports";
 import { onMounted } from "vue";
 
 defineOptions({
@@ -13,15 +13,12 @@ defineOptions({
 
 const { query } = useRoute();
 const token = query.token as string | undefined;
-
-const { setToken } = useAuthState();
-const { getSession } = useAuth();
+const { signIn } = useAuth();
 
 onMounted(async () => {
   console.log("取得したtoken:", token);
   if (token) {
-    setToken(token); // JWTをクッキーに保存
-    getSession(); // セッション情報を取得
+    await signIn({ token }); // JWTをクッキーに保存
     navigateTo("/"); // トップページへ遷移
   }
 });
