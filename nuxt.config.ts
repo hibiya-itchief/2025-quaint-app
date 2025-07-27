@@ -122,20 +122,14 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
 
   auth: {
-    origin: process.env.NUXT_PUBLIC_API_BASE,
-    globalAppMiddleware: true, //アクセス前に認証されてるか確認
-    session: { strategy: "jwt" },
-    provider: {
-      type: "local",
-      pages: {
-        login: "/login",
+    baseURL: process.env.NUXT_PUBLIC_API_BASE,
+    enableGlobalAppMiddleware: true, //アクセス前に認証されてるか確認
+    strategies: {
+      jwt: {
+        issuer: "quaint-api",
+        // session: false を明示
+        session: false,
       },
-    },
-    token: {
-      cookieName: "auth.token",
-      sameSiteAttribute: "lax",
-      secureCookieAttribute: true,
-      httpOnlyCookieAttribute: true,
     },
   },
 
