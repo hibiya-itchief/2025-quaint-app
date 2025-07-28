@@ -2971,7 +2971,7 @@
     "@vue/compiler-core" "3.5.18"
     "@vue/shared" "3.5.18"
 
-"@vue/compiler-sfc@3.5.18", "@vue/compiler-sfc@^3.3.0", "@vue/compiler-sfc@^3.5.13", "@vue/compiler-sfc@^3.5.17":
+"@vue/compiler-sfc@3.5.18", "@vue/compiler-sfc@^3.5.13", "@vue/compiler-sfc@^3.5.17", "@vue/compiler-sfc@^3.5.18":
   version "3.5.18"
   resolved "https://registry.yarnpkg.com/@vue/compiler-sfc/-/compiler-sfc-3.5.18.tgz#ba1e849561337d809937994cdaf900539542eeca"
   integrity sha512-5aBjvGqsWs+MoxswZPoTB9nSDb3dhd1x30xrrltKujlCxo48j8HGDNj3QPhF4VIS0VQDUrA1xUfp2hEa+FNyXA==

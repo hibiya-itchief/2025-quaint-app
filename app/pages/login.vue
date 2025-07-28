@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <p>QRコードログイン画面</p>
   <p>QRコードを読み取ると自動ログインします。</p>
 </template>
@@ -21,5 +21,15 @@ onMounted(async () => {
     await signIn({ token }); // JWTをクッキーに保存
     navigateTo("/"); // トップページへ遷移
   }
+});
+</script>-->
+<template>
+  <p>QRコードログイン画面</p>
+  <p>QRコードを読み取ると自動ログインします。</p>
+</template>
+
+<script setup lang="ts">
+defineOptions({
+  name: "LoginPage",
 });
 </script>

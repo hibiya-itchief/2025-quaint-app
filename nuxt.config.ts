@@ -122,14 +122,46 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
 
   auth: {
+    isEnabled: true,
+    globalAppMiddleware: true,
     baseURL: process.env.NUXT_PUBLIC_API_BASE,
-    enableGlobalAppMiddleware: true, //アクセス前に認証されてるか確認
-    strategies: {
-      jwt: {
-        issuer: "quaint-api",
-        // session: false を明示
-        session: false,
+    provider: {
+      type: "local",
+      endpoints: {
+        signIn: { path: "/login", method: "post" },
+        signOut: false,
+        getSession: { path: "/session", method: "get" },
+        signUp: false, //登録機能を無効化
       },
+      pages: {
+        login: "/login",
+      },
+      token: {
+        signInResponseTokenPointer: "/token", // 要確認レスポンス例: { token: "JWT" }
+        type: "Bearer",
+        headerName: "Authorization",
+        cookieName: "seiryo.token",
+        maxAgeInSeconds: 60 * 60 * 24 * 30, // 30日間
+        sameSiteAttribute: "lax",
+        secureCookieAttribute: false,
+        httpOnlyCookieAttribute: false,
+      },
+      session: {
+        dataType: {
+          user: "string",
+          groups: "string[]",
+          exp: "number",
+        },
+        dataResponsePointer: "/",
+      },
+    },
+  },
+
+  // 環境変数
+  runtimeConfig: {
+    //ブラウザからも確認可能な値はpublicに入れる
+    public: {
+      baseURL: "", //NUXT_PUBLIC_API_BASEに書き換えられる
     },
   },
 
@@ -144,13 +176,6 @@ export default defineNuxtConfig({
   // 型チェック
   typescript: {
     typeCheck: true,
-  },
-  // 環境変数
-  runtimeConfig: {
-    //ブラウザからも確認可能な値はpublicに入れる
-    public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE, //NUXT_PUBLIC_API_BASEに書き換えられる
-    },
   },
   //プラグイン設定
   plugins: ["~/plugins/vuetify.ts"],

@@ -17,7 +17,7 @@
     "@nuxtjs/stylelint-module": "^5.2.1",
     "@sidebase/nuxt-auth": "^1.0.0",
     "@vite-pwa/nuxt": "^1.0.4",
-    "@vue/compiler-sfc": "^3.3.0",
+    "@vue/compiler-sfc": "^3.5.18",
     "better-sqlite3": "^12.2.0",
     "eslint-config-prettier": "^9.1.0",
     "nuxt": "^4.0.0",
