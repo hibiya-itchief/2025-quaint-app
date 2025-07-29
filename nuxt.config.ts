@@ -128,7 +128,13 @@ export default defineNuxtConfig({
     provider: {
       type: "local",
       endpoints: {
-        signIn: { path: "/login", method: "post" },
+        signIn: {
+          path: "/login",
+          method: "post",
+          fetchOptions: {
+            credentials: "include",
+          },
+        },
         signOut: false,
         getSession: { path: "/session", method: "get" },
         signUp: false, //登録機能を無効化
@@ -140,10 +146,10 @@ export default defineNuxtConfig({
         signInResponseTokenPointer: "/token", // 要確認レスポンス例: { token: "JWT" }
         type: "Bearer",
         headerName: "Authorization",
-        cookieName: "seiryo.token",
+        cookieName: "seiryo_token",
         maxAgeInSeconds: 60 * 60 * 24 * 30, // 30日間
-        sameSiteAttribute: "lax",
-        secureCookieAttribute: false,
+        sameSiteAttribute: process.env.SAME_SITE_ATTRIBUTE, // HTTPS環境はnone
+        secureCookieAttribute: process.env.SECURE_COOKIE_ATTRIBUTE, //本番はtrue
         httpOnlyCookieAttribute: false,
       },
       session: {
