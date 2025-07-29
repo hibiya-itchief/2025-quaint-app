@@ -3,7 +3,10 @@ import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  compatibilityDate: "2024-04-03",
+  ssr: true,
   app: {
+    baseURL: "/",
     head: {
       htmlAttrs: {
         lang: "ja",
@@ -71,24 +74,98 @@ export default defineNuxtConfig({
       ],
     },
   },
-  compatibilityDate: "2024-04-03",
-  ssr: true,
 
+  //devtoolsの設定
   devtools: { enabled: true },
+
   //vuetifyの設定
   build: {
     transpile: ["vuetify"],
   },
+
+  // https://nuxt.com/modules ここに色々ある
   modules: [
+    // https://nuxt.com/modules/stylelint
+    "@nuxtjs/stylelint-module",
+    //sidebase/nuxt-authについて https://nuxt.com/modules/sidebase-auth
+    "@sidebase/nuxt-auth",
+    // https://nuxt.com/modules/content
+    "@nuxt/content",
+    // https://nuxt.com/modules/vite-pwa-nuxt
+    [
+      "@vite-pwa/nuxt",
+      {
+        meta: {
+          name: "星陵祭",
+          author: "IT委員会|東京都立日比谷高等学校",
+        },
+        manifest: {
+          name: "星陵祭",
+          short_name: "星陵祭",
+          lang: "ja",
+        },
+      },
+    ],
+    //QRコード https://nuxt.com/modules/qrcode https://qrcode.s94.dev/
+    "nuxt-qrcode",
+    // https://nuxt.com/modules/gtag
+    ["nuxt-gtag", { id: "G-3R9RL31VGF", debug: true }],
+    //VuetifyのコンポーネントやスタイルをVite経由で自動インポート
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
-        // @ts-expect-error
+        // @ts-expect-error Viteの型定義がVuetifyプラグインを正しく認識できない
         config.plugins.push(vuetify({ autoImport: true }));
       });
     },
-    //...
-    // "@sidebase/nuxt-auth",
   ],
+
+  css: ["~/assets/css/main.css"],
+
+  auth: {
+    isEnabled: true,
+    globalAppMiddleware: true,
+    baseURL: process.env.NUXT_PUBLIC_API_BASE,
+    provider: {
+      type: "local",
+      endpoints: {
+        signIn: { path: "/login", method: "post" },
+        signOut: false,
+        getSession: { path: "/session", method: "get" },
+        signUp: false, //登録機能を無効化
+      },
+      pages: {
+        login: "/login",
+      },
+      token: {
+        signInResponseTokenPointer: "/token", // 要確認レスポンス例: { token: "JWT" }
+        type: "Bearer",
+        headerName: "Authorization",
+        cookieName: "seiryo.token",
+        maxAgeInSeconds: 60 * 60 * 24 * 30, // 30日間
+        sameSiteAttribute: "lax",
+        secureCookieAttribute: false,
+        httpOnlyCookieAttribute: false,
+      },
+      session: {
+        dataType: {
+          user: "string",
+          groups: "string[]",
+          exp: "number",
+        },
+        dataResponsePointer: "/",
+      },
+    },
+  },
+
+  // 環境変数
+  runtimeConfig: {
+    //ブラウザからも確認可能な値はpublicに入れる
+    public: {
+      baseURL: "", //NUXT_PUBLIC_API_BASEに書き換えられる
+    },
+  },
+
+  //public配下のファイルを適切に処理する
   vite: {
     vue: {
       template: {
@@ -99,12 +176,6 @@ export default defineNuxtConfig({
   // 型チェック
   typescript: {
     typeCheck: true,
-  },
-  // 環境変数
-  runtimeConfig: {
-    public: {
-      apiBase: "", //NUXT_PUBLIC_API_BASEに書き換えられる
-    },
   },
   //プラグイン設定
   plugins: ["~/plugins/vuetify.ts"],
