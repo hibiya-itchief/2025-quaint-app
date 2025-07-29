@@ -1,10 +1,11 @@
-<!--<template>
+<template>
   <p>QRコードログイン画面</p>
   <p>QRコードを読み取ると自動ログインします。</p>
 </template>
 
 <script setup lang="ts">
-import { useAuth, useRoute, navigateTo } from "#imports";
+import { useAuth, navigateTo } from "#imports";
+import { useRoute } from "vue-router";
 import { onMounted } from "vue";
 
 defineOptions({
@@ -18,18 +19,13 @@ const { signIn } = useAuth();
 onMounted(async () => {
   console.log("取得したtoken:", token);
   if (token) {
-    await signIn({ token }); // JWTをクッキーに保存
-    navigateTo("/"); // トップページへ遷移
+    try {
+      await signIn({ token }, { redirect: false }); // JWTをクッキーに保存
+      navigateTo("/", { external: false }); // トップページへ遷移}
+    } catch (error) {
+      console.error("ログインに失敗しました:", error);
+      // エラーハンドリングを追加することもできます
+    }
   }
-});
-</script>-->
-<template>
-  <p>QRコードログイン画面</p>
-  <p>QRコードを読み取ると自動ログインします。</p>
-</template>
-
-<script setup lang="ts">
-defineOptions({
-  name: "LoginPage",
 });
 </script>
