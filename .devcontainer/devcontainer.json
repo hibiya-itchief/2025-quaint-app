@@ -18,8 +18,7 @@
   },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  //yarn run dev --port 3030で起動（quaint2024と同時に起動するため）
-  "forwardPorts": [3030],
+  "forwardPorts": [3000],
 
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "yarn install",
