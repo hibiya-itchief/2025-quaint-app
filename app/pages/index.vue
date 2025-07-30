@@ -8,7 +8,14 @@
 </template>
 
 <script setup lang="ts">
-import { useHead } from "#imports";
+import { useHead, useAuth } from "#imports";
+const { status, data: getSession } = useAuth();
+
+if (status.value === "authenticated") {
+  console.log("ログイン済みユーザー", getSession.value?.user);
+} else {
+  console.log("未承認ユーザー");
+}
 
 defineOptions({
   name: "PosterPage",
