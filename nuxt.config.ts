@@ -132,20 +132,15 @@ export default defineNuxtConfig({
   // 参考 https://github.com/sidebase/nuxt-auth
   auth: {
     isEnabled: true,
-    baseURL: process.env.NUXT_PUBLIC_API_BASE,
     provider: {
       type: "local",
       endpoints: {
-        signIn: {
-          path: "/login",
-          method: "post",
-        },
+        signUp: { path: "/signup", method: "post" },
         getSession: {
-          path: "/session",
+          path: "/user",
           method: "get",
         },
         signOut: false,
-        signUp: false, //登録機能を無効化
       },
       pages: {
         login: "/login",

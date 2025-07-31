@@ -3,6 +3,11 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     //vueを認識してもらう
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"]
+    }
   }
 }
