@@ -13,6 +13,7 @@ defineOptions({
 });
 
 const { signIn } = useAuth();
+const { setToken } = useAuthState();
 
 onMounted(async () => {
   const { query } = useRoute();
@@ -21,13 +22,15 @@ onMounted(async () => {
 
   if (token) {
     try {
-      await signIn(credentials, { redirect: false }); // JWTをクッキーに保存
+      const res = await signIn(credentials, { redirect: false }); // サインインAPI呼び出し
+      if (res && typeof res.token === "string") {
+        setToken(res.token); // JWTをcookieに保存
+      }
       const { rawToken } = useAuthState();
       console.log("rawToken:", rawToken.value);
       navigateTo("/");
     } catch (error) {
       console.error("ログインに失敗しました:", error);
-      // エラーハンドリングを追加することもできます
     }
   }
 });

@@ -3,13 +3,18 @@
     <v-card-title>ホーム</v-card-title>
     <v-card-text>
       <p>ようこそ、星陵祭2025公式サイトへ！</p>
+      <NuxtLink to="/poster">ポスター</NuxtLink>
     </v-card-text>
   </v-card>
 </template>
 
 <script setup lang="ts">
-import { useHead, useAuth } from "#imports";
+import { useHead, useAuth, definePageMeta } from "#imports";
 import { watchEffect } from "vue";
+
+definePageMeta({
+  auth: false,
+});
 
 const { getSession, status, data } = useAuth();
 
