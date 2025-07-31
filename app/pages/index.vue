@@ -9,13 +9,19 @@
 
 <script setup lang="ts">
 import { useHead, useAuth } from "#imports";
-const { status, data: getSession } = useAuth();
+import { watchEffect } from "vue";
 
-if (status.value === "authenticated") {
-  console.log("ログイン済みユーザー", getSession.value?.user);
-} else {
-  console.log("未承認ユーザー");
-}
+const { getSession, status, data } = useAuth();
+
+getSession({ required: true });
+
+watchEffect(() => {
+  if (status.value === "authenticated") {
+    console.log("ログイン済みユーザー", data.value?.user);
+  } else if (status.value === "unauthenticated") {
+    console.log("未承認ユーザー");
+  }
+});
 
 defineOptions({
   name: "PosterPage",

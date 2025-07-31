@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAuth, navigateTo } from "#imports";
+import { useAuth, useAuthState, navigateTo } from "#imports";
 import { useRoute } from "vue-router";
 import { onMounted } from "vue";
 
@@ -12,17 +12,19 @@ defineOptions({
   name: "LoginPage",
 });
 
-const { query } = useRoute();
-const token = query.token as string | undefined;
 const { signIn } = useAuth();
-const credentials = { token: token };
 
 onMounted(async () => {
-  console.log("取得したtoken:", token);
+  const { query } = useRoute();
+  const token = query.token as string | undefined;
+  const credentials = { token: token };
+
   if (token) {
     try {
-      await signIn(credentials, { callbackUrl: "/" }); // JWTをクッキーに保存
-      navigateTo("/", { external: false }); // トップページへ遷移
+      await signIn(credentials, { redirect: false }); // JWTをクッキーに保存
+      const { rawToken } = useAuthState();
+      console.log("rawToken:", rawToken.value);
+      navigateTo("/");
     } catch (error) {
       console.error("ログインに失敗しました:", error);
       // エラーハンドリングを追加することもできます

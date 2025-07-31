@@ -80,7 +80,7 @@ export default defineNuxtConfig({
 
   //vuetifyの設定
   build: {
-    transpile: ["vuetify"],
+    transpile: ["vuetify", "jsonwebtoken"],
   },
 
   // https://nuxt.com/modules ここに色々ある
@@ -121,9 +121,17 @@ export default defineNuxtConfig({
 
   css: ["~/assets/css/main.css"],
 
+  // 環境変数
+  runtimeConfig: {
+    //ブラウザからも確認可能な値はpublicに入れる
+    public: {
+      apiBase: "", //NUXT_PUBLIC_API_BASEに書き換えられる
+    },
+  },
+
+  // 参考 https://github.com/sidebase/nuxt-auth
   auth: {
     isEnabled: true,
-    globalAppMiddleware: true,
     baseURL: process.env.NUXT_PUBLIC_API_BASE,
     provider: {
       type: "local",
@@ -133,8 +141,12 @@ export default defineNuxtConfig({
           method: "post",
           fetchOptions: { credentials: "include" },
         },
+        getSession: {
+          path: "/session",
+          method: "get",
+          fetchOptions: { credentials: "include" },
+        },
         signOut: false,
-        getSession: { path: "/session", method: "get" },
         signUp: false, //登録機能を無効化
       },
       pages: {
@@ -144,11 +156,11 @@ export default defineNuxtConfig({
         signInResponseTokenPointer: "/token", // 要確認レスポンス例: { token: "JWT" }
         type: "Bearer",
         headerName: "Authorization",
-        cookieName: "seiryo_token",
+        cookieName: "auth.token",
         maxAgeInSeconds: 60 * 60 * 24 * 30, // 30日間
         sameSiteAttribute: process.env.SAME_SITE_ATTRIBUTE,
         secureCookieAttribute: process.env.SECURE_COOKIE_ATTRIBUTE,
-        httpOnlyCookieAttribute: false,
+        httpOnlyCookieAttribute: process.env.HTTP_ONLY_COOKIE_ATTRIBUTE,
       },
       session: {
         dataType: {
@@ -159,13 +171,13 @@ export default defineNuxtConfig({
         dataResponsePointer: "/",
       },
     },
-  },
-
-  // 環境変数
-  runtimeConfig: {
-    //ブラウザからも確認可能な値はpublicに入れる
-    public: {
-      baseURL: "", //NUXT_PUBLIC_API_BASEに書き換えられる
+    globalAppMiddleware: {
+      isEnabled: true,
+    },
+    routeRules: {
+      "/with-caching": {
+        swr: 86400000,
+      },
     },
   },
 
