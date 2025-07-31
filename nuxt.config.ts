@@ -139,12 +139,10 @@ export default defineNuxtConfig({
         signIn: {
           path: "/login",
           method: "post",
-          fetchOptions: { credentials: "include" },
         },
         getSession: {
           path: "/session",
           method: "get",
-          fetchOptions: { credentials: "include" },
         },
         signOut: false,
         signUp: false, //登録機能を無効化
@@ -159,8 +157,9 @@ export default defineNuxtConfig({
         cookieName: "auth.token",
         maxAgeInSeconds: 60 * 60 * 24 * 30, // 30日間
         sameSiteAttribute: process.env.SAME_SITE_ATTRIBUTE,
-        secureCookieAttribute: process.env.SECURE_COOKIE_ATTRIBUTE,
-        httpOnlyCookieAttribute: process.env.HTTP_ONLY_COOKIE_ATTRIBUTE,
+        secureCookieAttribute: process.env.SECURE_COOKIE_ATTRIBUTE === "true",
+        httpOnlyCookieAttribute:
+          process.env.HTTP_ONLY_COOKIE_ATTRIBUTE === "true",
       },
       session: {
         dataType: {
@@ -173,11 +172,6 @@ export default defineNuxtConfig({
     },
     globalAppMiddleware: {
       isEnabled: true,
-    },
-    routeRules: {
-      "/with-caching": {
-        swr: 86400000,
-      },
     },
   },
 
