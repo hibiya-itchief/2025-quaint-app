@@ -188,7 +188,7 @@ export default defineNuxtConfig({
 
   //cloudflareにデプロイするための設定 https://nitro.build/deploy/providers/cloudflare#cloudflare-workers
   nitro: {
-    preset: "cloudflare_pages",
+    preset: "cloudflare",
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
