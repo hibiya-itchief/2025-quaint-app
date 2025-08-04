@@ -134,6 +134,7 @@ export default defineNuxtConfig({
     isEnabled: true,
     provider: {
       type: "local",
+      baseURL: "/api/auth",
       endpoints: {
         getSession: { path: "/user" },
         signIn: { path: "/login", method: "post" },
