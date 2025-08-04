@@ -136,7 +136,7 @@ export default defineNuxtConfig({
       type: "local",
       baseURL: "/api/auth",
       endpoints: {
-        getSession: { path: "/user" },
+        getSession: { path: "/user", method: "get" },
         signIn: { path: "/login", method: "post" },
         logout: false,
       },
@@ -188,13 +188,14 @@ export default defineNuxtConfig({
 
   //cloudflareにデプロイするための設定 https://nitro.build/deploy/providers/cloudflare#cloudflare-workers
   nitro: {
-    preset: "cloudflare",
+    preset: "cloudflare_pages",
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
     },
     prerender: {
       routes: ["/"],
+      autoSubfolderIndex: false,
     },
   },
 });
