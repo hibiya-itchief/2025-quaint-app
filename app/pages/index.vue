@@ -9,23 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import { useHead, useAuth, definePageMeta } from "#imports";
-import { watchEffect } from "vue";
+import { useHead, definePageMeta } from "#imports";
 
 definePageMeta({
   auth: false,
-});
-
-const { getSession, status, data } = useAuth();
-
-getSession({ required: true });
-
-watchEffect(() => {
-  if (status.value === "authenticated") {
-    console.log("ログイン済みユーザー", data.value?.user);
-  } else if (status.value === "unauthenticated") {
-    console.log("未承認ユーザー");
-  }
 });
 
 defineOptions({

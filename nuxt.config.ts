@@ -135,12 +135,9 @@ export default defineNuxtConfig({
     provider: {
       type: "local",
       endpoints: {
-        signUp: { path: "/signup", method: "post" },
-        getSession: {
-          path: "/user",
-          method: "get",
-        },
-        signOut: false,
+        getSession: { path: "/user" },
+        signIn: { path: "/login", method: "post" },
+        logout: false,
       },
       pages: {
         login: "/login",
@@ -158,9 +155,12 @@ export default defineNuxtConfig({
       },
       session: {
         dataType: {
-          user: "string",
+          sub: "string",
           groups: "string[]",
+          name: "string",
           exp: "number",
+          iss: "string",
+          jti: "string",
         },
         dataResponsePointer: "/",
       },

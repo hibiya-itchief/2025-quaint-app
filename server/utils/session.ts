@@ -1,112 +1,40 @@
-/*
- * DISCLAIMER!
- * This is a demo implementation, please create your own handlers
- */
-
 import { sign, verify } from 'jsonwebtoken'
-import { z } from 'zod'
 
-/**
- * This is a demo secret.
- * Please ensure that your secret is properly protected.
- */
-const SECRET = 'dummy'
+const PRIVATE_KEY = process.env.PRIVATE_KEY
+const PUBLIC_KEY = process.env.PUBLIC_KEY
 
-/** 30 seconds */
-const ACCESS_TOKEN_TTL = 30
-
+//型宣言
 export interface User {
-  username: string
+  sub: string
+  groups: string[]
   name: string
-  picture: string
 }
 
+//型宣言（Userを継承）
 export interface JwtPayload extends User {
-  scope: Array<'test' | 'user'>
-  exp?: number
+  exp: number
+  iss: string
+  jti: string
 }
 
+//アクセス・リフレッシュトークンの対応関係を管理
 interface TokensByUser {
   access: Map<string, string>
   refresh: Map<string, string>
 }
 
-/**
- * Tokens storage.
- * You will need to implement your own, connect with DB/etc.
- */
-const tokensByUser: Map<string, TokensByUser> = new Map()
-
-/**
- * We use a fixed password for demo purposes.
- * You can use any implementation fitting your usecase.
- */
-export const credentialsSchema = z.object({
-  username: z.string().min(1),
-  password: z.literal('hunter2')
-})
-
-/**
- * Stub function for creating/getting a user.
- * Your implementation can use a DB call or any other method.
- */
-export function getUser(username: string): Promise<User> {
-  // Emulate async work
-  return Promise.resolve({
-    username,
-    picture: 'https://github.com/nuxt.png',
-    name: `User ${username}`
-  })
-}
-
+//型宣言
 interface UserTokens {
   accessToken: string
   refreshToken: string
 }
 
 /**
- * Demo function for signing user tokens.
- * Your implementation may differ.
- */
-export function createUserTokens(user: User): Promise<UserTokens> {
-  const tokenData: JwtPayload = { ...user, scope: ['test', 'user'] }
-  const accessToken = sign(tokenData, SECRET, {
-    expiresIn: ACCESS_TOKEN_TTL
-  })
-  const refreshToken = sign(tokenData, SECRET, {
-    // 1 day
-    expiresIn: 60 * 60 * 24
-  })
-
-  // Naive implementation - please implement properly yourself!
-  const userTokens: TokensByUser = tokensByUser.get(user.username) ?? {
-    access: new Map(),
-    refresh: new Map()
-  }
-  userTokens.access.set(accessToken, refreshToken)
-  userTokens.refresh.set(refreshToken, accessToken)
-  tokensByUser.set(user.username, userTokens)
-
-  // Emulate async work
-  return Promise.resolve({
-    accessToken,
-    refreshToken
-  })
-}
-
-/**
  * Function for getting the data from a JWT
  */
+//解読
 export function decodeToken(token: string): JwtPayload | undefined {
-  return verify(token, SECRET) as JwtPayload | undefined
-}
-
-/**
- * Helper only for demo purposes.
- * Your implementation will likely never need this and will rely on User ID and DB.
- */
-export function getTokensByUser(username: string): TokensByUser | undefined {
-  return tokensByUser.get(username)
+  return verify(token, PUBLIC_KEY as string) as JwtPayload | undefined
 }
 
 type CheckUserTokensResult = { valid: true, knownAccessToken: string } | { valid: false, knownAccessToken: undefined }
@@ -116,6 +44,7 @@ type CheckUserTokensResult = { valid: true, knownAccessToken: string } | { valid
  * Your implementation will probably use the DB call.
  * @param tokensByUser A helper for demo purposes
  */
+//リフレッシュトークンとアクセストークンのペアが正しいかどうかを検証
 export function checkUserTokens(tokensByUser: TokensByUser, requestAccessToken: string, requestRefreshToken: string): CheckUserTokensResult {
   const knownAccessToken = tokensByUser.refresh.get(requestRefreshToken)
 
@@ -134,46 +63,51 @@ export function checkUserAccessToken(tokensByUser: TokensByUser, requestAccessTo
   } as CheckUserTokensResult
 }
 
+//指定したトークンを無効化
 export function invalidateAccessToken(tokensByUser: TokensByUser, accessToken: string) {
   tokensByUser.access.delete(accessToken)
 }
 
 export function refreshUserAccessToken(tokensByUser: TokensByUser, refreshToken: string): Promise<UserTokens | undefined> {
-  // Get the access token
+  // リフレッシュトークンに対応する古いアクセストークンを取得
   const oldAccessToken = tokensByUser.refresh.get(refreshToken)
   if (!oldAccessToken) {
-    // Promises to emulate async work (e.g. of a DB call)
+    // 対応するアクセストークンがなければ undefined を返す
     return Promise.resolve(undefined)
   }
 
-  // Invalidate old access token
+  // 古いアクセストークンを無効化（削除）
   invalidateAccessToken(tokensByUser, oldAccessToken)
 
-  // Get the user data. In a real implementation this is likely a DB call.
-  // In this demo we simply re-use the existing JWT data
+  //リフレッシュトークンからユーザー情報を復元（JWTをデコード）
   const jwtUser = decodeToken(refreshToken)
   if (!jwtUser) {
     return Promise.resolve(undefined)
   }
 
+  //ユーザー情報を作成
   const user: User = {
-    username: jwtUser.username,
-    picture: jwtUser.picture,
+    sub: jwtUser.sub,
+    groups: jwtUser.groups,
     name: jwtUser.name
   }
 
-  const accessToken = sign({ ...user, scope: ['test', 'user'] }, SECRET, {
+  //新しいアクセストークンを発行（有効期限5分）
+  const accessToken = sign({ ...user, scope: ['test', 'user'] }, PRIVATE_KEY as string, {
     expiresIn: 60 * 5 // 5 minutes
   })
+  // 新しいアクセストークンとリフレッシュトークンの対応関係を保存
   tokensByUser.refresh.set(refreshToken, accessToken)
   tokensByUser.access.set(accessToken, refreshToken)
 
+  //新しいトークンを返す
   return Promise.resolve({
     accessToken,
     refreshToken
   })
 }
 
+// HTTPリクエストのAuthorizationヘッダーからトークン部分だけを抜き出す
 export function extractTokenFromAuthorizationHeader(authorizationHeader: string): string {
   return authorizationHeader.startsWith('Bearer ')
     ? authorizationHeader.slice(7)

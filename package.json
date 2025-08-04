@@ -19,13 +19,12 @@
     "@vue/compiler-sfc": "^3.5.18",
     "better-sqlite3": "^12.2.0",
     "eslint-config-prettier": "^9.1.0",
+    "jsonwebtoken": "^9.0.2",
     "nuxt": "^4.0.2",
     "nuxt-gtag": "^3.0.3",
     "sass": "^1.89.2",
     "vue": "^3.5.18",
-    "vue-router": "latest",
-    "jsonwebtoken": "^9.0.2",
-    "zod": "^3.25.76"
+    "vue-router": "latest"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
@@ -45,9 +44,9 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.14.0",
     "vite-plugin-vuetify": "^2.1.1",
+    "vitest": "^3.2.4",
     "vue-tsc": "^3.0.3",
-    "vuetify": "^3.9.2",
-    "vitest": "^3.2.4"
+    "vuetify": "^3.9.2"
   },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"

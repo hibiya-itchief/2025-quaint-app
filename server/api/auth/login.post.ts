@@ -1,27 +1,22 @@
 import { createError, eventHandler, readBody } from 'h3'
-import { createUserTokens, credentialsSchema, getUser } from '~/server/utils/session'
-
-/*
- * DISCLAIMER!
- * This is a demo implementation, please create your own handlers
- */
+import { decodeToken } from '../../utils/session'
 
 export default eventHandler(async (event) => {
-  const result = credentialsSchema.safeParse(await readBody(event))
-  if (!result.success) {
-    throw createError({
-      statusCode: 403,
-      message: 'Unauthorized, hint: try `hunter2` as password'
-    })
-  }
-
-  // Emulate successful login
-  const user = await getUser(result.data.username)
-
-  // Sign the tokens
-  const tokens = await createUserTokens(user)
-
-  return {
-    token: tokens
+  // リクエストボディを受け取る
+  const body = await readBody(event)
+  //tokenが含まれていたら
+  if (body.token) {
+    // JWTをデコードして検証
+    const decoded = decodeToken(body.token)
+    console.log('Decoded token:', decoded)
+    //decodedがnullやundefinedの場合
+    if (!decoded) {
+      throw createError({
+        statusCode: 401,
+        message: 'Invalid token'
+      })
+    }
+    
+    return { token: body.token }
   }
 })
