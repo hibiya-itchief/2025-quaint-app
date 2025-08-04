@@ -3,7 +3,7 @@ import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2024-09-19",
+  compatibilityDate: "2025-08-01",
   ssr: true,
   app: {
     baseURL: "/",
