@@ -3,7 +3,7 @@ import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2024-04-03",
+  compatibilityDate: "2024-09-19",
   ssr: true,
   app: {
     baseURL: "/",
@@ -188,7 +188,7 @@ export default defineNuxtConfig({
 
   //cloudflareにデプロイするための設定 https://nitro.build/deploy/providers/cloudflare#cloudflare-workers
   nitro: {
-    preset: "cloudflare",
+    preset: "cloudflare_pages",
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
