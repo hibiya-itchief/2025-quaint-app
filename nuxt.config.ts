@@ -190,10 +190,6 @@ export default defineNuxtConfig({
   nitro: {
     preset: "cloudflare_pages",
     cloudflare: {
-      compatibilityFlags: [
-        "nodejs_compat",
-        "nodejs_compat_populate_process_env",
-      ],
       deployConfig: true,
       nodeCompat: true,
     },
