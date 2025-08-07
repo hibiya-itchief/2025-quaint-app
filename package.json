@@ -8,12 +8,10 @@
     "staging": "nuxi generate --dotenv .env.staging",
     "generate": "nuxi generate --dotenv .env.production",
     "preview": "nuxi preview",
-    "postinstall": "nuxi prepare",
-    "postgenerate": "mkdir -p dist/_worker.js && mv dist/_worker.js dist/_worker.js/index.js || true"
+    "postinstall": "nuxi prepare"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
-    "@nuxt/content": "^3.6.3",
     "@nuxtjs/stylelint-module": "^5.2.1",
     "@sidebase/nuxt-auth": "^1.0.0",
     "@vite-pwa/nuxt": "^1.0.4",

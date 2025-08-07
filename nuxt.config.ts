@@ -89,8 +89,6 @@ export default defineNuxtConfig({
     "@nuxtjs/stylelint-module",
     //sidebase/nuxt-authについて https://nuxt.com/modules/sidebase-auth
     "@sidebase/nuxt-auth",
-    // https://nuxt.com/modules/content
-    "@nuxt/content",
     // https://nuxt.com/modules/vite-pwa-nuxt
     [
       "@vite-pwa/nuxt",
