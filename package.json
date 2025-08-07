@@ -8,7 +8,8 @@
     "staging": "nuxi generate --dotenv .env.staging",
     "generate": "nuxi generate --dotenv .env.production",
     "preview": "nuxi preview",
-    "postinstall": "nuxi prepare"
+    "postinstall": "nuxi prepare",
+    "postgenerate": "mkdir -p dist/_worker.js && mv dist/_worker.js dist/_worker.js/index.js || true"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
