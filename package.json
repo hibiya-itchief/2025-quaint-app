@@ -3,12 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxi build",
-    "dev": "nuxi dev --dotenv .env.development",
-    "staging": "nuxi generate --dotenv .env.staging",
-    "generate": "nuxi generate --dotenv .env.production",
-    "preview": "nuxi preview",
-    "postinstall": "nuxi prepare"
+    "build": "nuxt build",
+    "dev": "nuxt dev --dotenv .env.development",
+    "staging": "nuxt generate --dotenv .env.staging",
+    "generate": "nuxt generate --dotenv .env.production",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
