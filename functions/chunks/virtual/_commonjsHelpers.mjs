@@ -1,2 +1,0 @@
-function getDefaultExportFromCjs(t){return t&&t.__esModule&&Object.prototype.hasOwnProperty.call(t,"default")?t.default:t}function getDefaultExportFromNamespaceIfNotNamed(t){return t&&Object.prototype.hasOwnProperty.call(t,"default")&&1===Object.keys(t).length?t.default:t}export{getDefaultExportFromCjs as a,getDefaultExportFromNamespaceIfNotNamed as g};
-//# sourceMappingURL=_commonjsHelpers.mjs.map

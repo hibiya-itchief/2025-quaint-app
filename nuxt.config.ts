@@ -188,11 +188,6 @@ export default defineNuxtConfig({
   nitro: {
     //preset設定は絶対cloudflare_pages
     preset: "cloudflare_pages",
-    output: {
-      dir: "output",
-      serverDir: "output/server",
-      publicDir: "output/public",
-    },
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,

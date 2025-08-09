@@ -1,2 +1,0 @@
-const e='.page-bg{align-items:center;display:flex;flex-direction:column;min-height:100vh;-webkit-user-select:none;-moz-user-select:none;user-select:none}.responsive-poster{display:block;height:90vh;-o-object-fit:contain;object-fit:contain;width:auto}@media (max-width:600px){.responsive-poster{height:auto;max-width:100vw;width:100vw}.page-bg{min-height:100vh;padding:0}}.card{max-width:500px;width:100%}ul{list-style-type:none}li{margin-top:20px}li:before{content:"♪ "}';export{e as p};
-//# sourceMappingURL=poster-styles-1.mjs-C_Plf2rG.mjs.map

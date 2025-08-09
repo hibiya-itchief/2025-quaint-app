@@ -1,1 +1,0 @@
-{"version":3,"file":"composables-Dg-eovls.mjs","sources":["../../../../node_modules/nuxt/dist/head/runtime/composables.js"],"sourcesContent":null,"names":["useHead","input","options","head","nuxtApp","nuxt","useNuxtApp","ssrContext","runWithContext","hasInjectionContext","inject","headSymbol","Error","injectHead","headCore"],"mappings":"","x_google_ignoreList":[0]}

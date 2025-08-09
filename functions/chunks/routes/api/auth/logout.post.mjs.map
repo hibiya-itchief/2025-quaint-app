@@ -1,1 +1,0 @@
-{"version":3,"file":"logout.post.mjs","sources":["../../../../../../server/api/auth/logout.post.ts"],"sourcesContent":null,"names":["logout_post","eventHandler","status"],"mappings":"+LAEA,MAAAA,EAAeC,EAAa,KAAA,CAASC,OAAQ"}
