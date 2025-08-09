@@ -11,6 +11,7 @@ export default eventHandler(async (event) => {
   try {
     decoded = decodeToken(body.token)
   } catch (error) {
+    console.error('Token decode error:', error)
     throw createError({ statusCode: 401, message: 'Invalid token' })
   }
 
