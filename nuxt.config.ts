@@ -184,9 +184,10 @@ export default defineNuxtConfig({
   //プラグイン設定
   plugins: ["~/plugins/vuetify.ts"],
 
-  //cloudflareにデプロイするための設定 https://nitro.build/deploy/providers/cloudflare#cloudflare-pages
+  //cloudflareにデプロイするための設定 https://nitro.build/deploy/providers/cloudflare#cloudflare-pages 情報が不足している
   nitro: {
-    preset: "cloudflare_pages",
+    //preset設定は絶対cloudflare
+    preset: "cloudflare",
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
