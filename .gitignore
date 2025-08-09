@@ -7,7 +7,6 @@
 .wrangler
 dist
 output
-functions
 
 # Node dependencies
 node_modules
