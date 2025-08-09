@@ -1,0 +1,2 @@
+import{e as o,r as t,c as e}from"../../../nitro/nitro.mjs";import{d as r}from"../../../_/session.mjs";import"node:events";import"node:buffer";import"node:process";import"cloudflare:workers";import"node:timers";import"node:util";import"node:crypto";import"../../../virtual/_commonjsHelpers.mjs";import"node:stream";const s=o(async o=>{const s=await t(o);if(s.token){const o=r(s.token);if(console.log("Decoded token:",o),!o)throw e({statusCode:401,message:"Invalid token"});return{token:s.token}}});export{s as default};
+//# sourceMappingURL=login.post.mjs.map
