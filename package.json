@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build && cp -r output/server functions",
+    "build": "nuxt build && rm -rf functions && cp -r output/server functions",
     "dev": "nuxt dev --dotenv .env.development",
     "staging": "nuxt generate --dotenv .env.staging",
     "generate": "nuxt generate --dotenv .env.production",

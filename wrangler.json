@@ -1,0 +1,9 @@
+{
+  "compatibility_date": "2025-08-01",
+  "pages_build_output_dir": "..",
+  "name": "hibiya-itchief-2025-quaint-app",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "no_nodejs_compat_v2"
+  ]
+}
